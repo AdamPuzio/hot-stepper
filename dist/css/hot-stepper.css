@@ -1,0 +1,363 @@
+.hot-stepper {
+  max-width: 1000px;
+  margin: 50px auto;
+  position: relative;
+  /*
+   * Buttons
+   */
+  /*
+   * Mask & Loader
+   */
+}
+
+.hot-stepper .hs-header {
+  position: relative;
+  background-color: gray;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: content-box;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+}
+
+.hot-stepper .hs-header .hs-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(77, 99, 123, 0.6);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.hot-stepper .hs-header .hs-content {
+  position: absolute;
+  width: 100%;
+  padding: 0 50px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.hot-stepper .hs-header h1, .hot-stepper .hs-header h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 0;
+}
+
+.hot-stepper .hs-header p {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: .8rem;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+.hot-stepper .hs-header .hs-steps {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(50%);
+  z-index: 10;
+}
+
+.hot-stepper .hs-header .hs-steps .steps {
+  position: relative;
+  display: flex;
+  flex: 0 1 auto;
+  color: #fff;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 5px;
+  /*overflow: hidden;*/
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .step-number {
+  font-size: 1.3rem;
+  color: #676767;
+  background: #FFF;
+  font-weight: 800;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 5px solid #c3c3c3;
+  transition: opacity .5s;
+  opacity: 1;
+  z-index: 5;
+  box-sizing: content-box;
+  /* added */
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .checkmark {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #75b2f5;
+  z-index: -1;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .checkmark .checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 8;
+  stroke-miterlimit: 10;
+  stroke: #5094de;
+  fill: none;
+  animation: hs-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  /*box-sizing: content-box;*/
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .checkmark .checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  stroke: #FFF;
+  stroke-width: 5;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .line {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: -1;
+  height: 6px;
+  transition: all 0.5s ease;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .line.-start {
+  left: 0%;
+  background: #5094de;
+  width: 50%;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .line.-end {
+  left: 50%;
+  background: #5094de;
+  width: 50%;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .line.-background {
+  background: #c3c3c3;
+  width: 100%;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .line.-progress {
+  background: #5094de;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step .step-content .line.-in-progress {
+  transform: scaleX(1);
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step.-completed .step-content .step-number {
+  opacity: 0;
+  box-sizing: content-box;
+  /* added */
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step.-completed .checkmark {
+  z-index: 0;
+  animation: hs-fill .4s ease-in-out forwards,  scale .3s ease-in-out .6s both;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step.-completed .checkmark-check {
+  animation: hs-stroke .5s linear .4s forwards;
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step.-completed .line {
+  transform: scaleX(1);
+}
+
+.hot-stepper .hs-header .hs-steps .steps .step:last-child .line {
+  width: 50%;
+}
+
+.hot-stepper .hs-body {
+  position: relative;
+  overflow: hidden;
+}
+
+.hot-stepper .hs-body .panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: .5s all;
+  /*padding: 50px;*/
+  padding: 50px 20px 20px 20px;
+  width: 100%;
+}
+
+.hot-stepper .hs-body .panel.movingOutBackward {
+  transform: translateX(calc(-100vw));
+}
+
+.hot-stepper .hs-body .panel.movingOutForward {
+  transform: translateX(calc(100vw));
+}
+
+.hot-stepper .hs-body .panel.movingIn {
+  transform: translateX(0);
+}
+
+.hot-stepper .hs-body .hs-footer {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.hot-stepper.completed {
+  animation: hs-gettingOut 2s cubic-bezier(1, -0.71, 1, 1.16) forwards;
+}
+
+.hot-stepper .hs-button {
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1rem;
+  background: #5094de;
+  color: #FFF;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  display: inline-block;
+  transition: all .3s;
+}
+
+.hot-stepper .hs-button:hover {
+  background: #7baee6;
+}
+
+.hot-stepper .hs-button.btn-prev {
+  margin-right: 5px;
+}
+
+.hot-stepper .hs-button:disabled {
+  background: #c3c3c3;
+  cursor: default;
+}
+
+.hot-stepper .hs-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(77, 99, 123, 0.6);
+  display: none;
+  z-index: 10;
+}
+
+.hot-stepper.loading .hs-mask {
+  display: block;
+}
+
+.hot-stepper .hs-loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hot-stepper .hs-loader div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: hs-loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.hot-stepper .hs-loader div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.hot-stepper .hs-loader div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.hot-stepper .hs-loader div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes hs-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hs-scale {
+  50% {
+    transform: translateX(-50%) scale3d(1.5, 1.5, 1.5);
+  }
+  100% {
+    transform: scale3d(0);
+  }
+}
+
+@keyframes hs-fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #75b2f5;
+  }
+}
+
+@keyframes hs-gettingOut {
+  0% {
+    transform: translateY(0%);
+  }
+  30% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
+
+@keyframes hs-fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hs-loader {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}

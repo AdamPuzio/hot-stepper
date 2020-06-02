@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started</title>
+    <link rel="stylesheet" href="../dist/css/hot-stepper.css" />
+    <script src="https://unpkg.com/lodash@4.16.6"></script>
+  </head>
+  <body>
+
+    <style type="text/css">
+      .hs-header {
+        height: 200px;
+        /*background-image: url(/assets/img/stock/thisisengineering-raeng-lr5RHwBmrbs-unsplash.jpg);*/
+      }
+    </style>
+    
+
+    <div class="hot-stepper">
+      <header class="hs-header">
+        <div class="hs-overlay"></div>
+        <div class="hs-content">
+          <h1>Hot Stepper</h1>
+          <p>This is a basic implementation</p>
+        </div>
+        <div class="hs-steps">
+          <nav class="steps">
+
+            <div class="step">
+              <div class="step-content">
+                <p class="step-number">
+                  1
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-content">
+                <p class="step-number">
+                  2
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-content">
+                <p class="step-number">
+                  3
+                </p>
+              </div>
+            </div>
+
+          </nav>
+        </div>
+      </header>
+
+      <div class="hs-body">
+        <div class="panel">
+          Panel 1
+        </div>
+        <div class="panel">
+          Panel 2
+        </div>
+        <div class="panel">
+          Panel 3
+        </div>
+        <div class="panel complete">
+          Complete!
+        </div>
+      </div>
+
+      <footer class="hs-footer">
+        <div>
+          <button class="hs-button btn-prev">Prev</button>
+          <button class="hs-button btn-next">Next</button>
+        </div>
+      </footer>
+    </div>
+    
+    <script src="../dist/js/hot-stepper.js"></script>
+
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      var stepper = new HotStepper(document.querySelector('.hot-stepper'), {
+        animation: false,
+        onChange: async function(info) {
+          console.log('onChange()')
+          console.log(info)
+          await new Promise(resolve => setTimeout(resolve, 500))
+          return true
+        },
+        onComplete: async function(info) {
+          console.log('onComplete()')
+          console.log(info)
+          await new Promise(resolve => setTimeout(resolve, 1000))
+          return true
+        }
+      })
+
+      document.querySelectorAll('.btn-next').forEach(function(el) {
+        el.addEventListener('click', function() {
+          stepper.next()
+        })
+      })
+
+      document.querySelectorAll('.btn-prev').forEach(function(el) {
+        el.addEventListener('click', function() {
+          stepper.previous()
+        })
+      })
+
+      /*document.querySelectorAll('.btn-next').addEventListener('click', function() {
+        stepper.next()
+      })*/
+    })
+    </script>
+    
+  </body>
+</html>
