@@ -1,11 +1,11 @@
 {
   "name": "hot-stepper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Vanilla js stepper",
-  "main": "webpack.config.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --mode='production'"
+    "build": "gulp build"
   },
   "keywords": [],
   "author": "",
