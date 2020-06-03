@@ -177,6 +177,7 @@
 
   class HotStepper {
     constructor(element, _options = {}) {
+      if (typeof element === 'string') element = document.querySelector(element);
       this._element = element;
       this._currentIndex = 0;
       this._stepsCount = 0;

@@ -80,7 +80,7 @@
 
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-      var stepper = new HotStepper(document.querySelector('.hot-stepper'), {
+      var stepper = new HotStepper('.hot-stepper', {
         animation: false,
         onChange: async function(info) {
           console.log('onChange()')
@@ -107,10 +107,6 @@
           stepper.previous()
         })
       })
-
-      /*document.querySelectorAll('.btn-next').addEventListener('click', function() {
-        stepper.next()
-      })*/
     })
     </script>
     
